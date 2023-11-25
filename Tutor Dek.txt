@@ -1,0 +1,7 @@
+1. Import SQL
+2.buka localhost/wahyu_redjo    -->> untuk Halaman End User
+
+2.buka localhost/wahyu_redjo/Admin    -->> untuk Halaman Administrator
+
+	Username : Admin
+	Password : 12345678
