@@ -130,34 +130,3 @@ function tgl_indo($tanggal){
         </div>
     </div>
 </section>
-<section class="price_section layout_padding">
-    <div class="container">
-        <div class="heading_container">
-            <h2>
-                Rincian Harga Emas Hari Ini
-            </h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Gram</th>
-                        <th>Harga Jual</th>
-                        <th>Harga Beli</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="price_container">
-
-        </div>
-        <div class="d-flex justify-content-center">
-            <a href="" class="price_btn">
-                See More
-            </a>
-        </div>
-    </div>
-</section>
