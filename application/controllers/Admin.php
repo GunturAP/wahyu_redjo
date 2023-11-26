@@ -24,28 +24,73 @@ class Admin extends CI_Controller
   public function harga_emas()
   {
       $harga=$this->Admin_model->get_harga();
+      $riwayat=$this->Admin_model->get_riwayat();
       $array=array(
-        'harga' => $harga
+        'harga' => $harga,
+        'riwayat' => $riwayat
       );
     
     $this->load->view('admin/header',$array);
     $this->load->view('admin/update_harga_emas');
     $this->load->view('admin/footer');
   }
+  
+  public function tes(){
+    echo date('j');
+  }
   public function update_harga_emas()
   {
+      $tgl=date('j');
+      $bln=date('m');
+      $thn=date('Y');
       $id=$this->input->post('id');
       $update=array(
-        'harga_jual'=>$this->input->post('harga_jual'),
-        'harga_beli'=>$this->input->post('harga_beli'),
+        'jual_6'=>$this->input->post('jual_6'),
+        'beli_6'=>$this->input->post('beli_6'),
+        'jual_8'=>$this->input->post('jual_8'),
+        'beli_8'=>$this->input->post('beli_8'),
+        'jual_16'=>$this->input->post('jual_16'),
+        'beli_16'=>$this->input->post('beli_16'),
+        'jual_17'=>$this->input->post('jual_17'),
+        'beli_17'=>$this->input->post('beli_17'),
+        'jual_8_p'=>$this->input->post('jual_8_p'),
+        'beli_8_p'=>$this->input->post('beli_8_p'),
+        'jual_24'=>$this->input->post('jual_24'),
+        'beli_24'=>$this->input->post('beli_24'),
         'time'=>time()
       );
+      $riwayat=array(
+        'jual_6'=>$this->input->post('jual_6'),
+        'beli_6'=>$this->input->post('beli_6'),
+        'jual_8'=>$this->input->post('jual_8'),
+        'beli_8'=>$this->input->post('beli_8'),
+        'jual_16'=>$this->input->post('jual_16'),
+        'beli_16'=>$this->input->post('beli_16'),
+        'jual_17'=>$this->input->post('jual_17'),
+        'beli_17'=>$this->input->post('beli_17'),
+        'jual_8_p'=>$this->input->post('jual_8_p'),
+        'beli_8_p'=>$this->input->post('beli_8_p'),
+        'jual_24'=>$this->input->post('jual_24'),
+        'beli_24'=>$this->input->post('beli_24'),
+        'tgl'=> $tgl,
+        'bln'  => $bln,
+        'thn' => $thn,
+        'time'=>time()
+      );
+      $cek = $this->Admin_model->cek_riwayat($tgl,$bln,$thn);
+      if(!$cek){
+        //jika data riwayat belum ada
+        $this->Admin_model->tambah_riwayat_harga($riwayat);
+
+      }else{
+        //jika data riwayat sudah ada
+        $id=$cek['id_riwayat'];
+        $this->Admin_model->edit_riwayat_harga($id,$riwayat);
+     }
       $this->Admin_model->edit_harga($id,$update);
       $this->session->set_flashdata('msg', 'Data Rekening Berhasil Di Tambah');
-
       redirect('admin/harga_emas');
-    
-
+  
   }
   public function outlet()
   {
@@ -98,7 +143,7 @@ class Admin extends CI_Controller
     
   }
   public function edit_outlet($id=null){
-    $edit = $this->db->get_where('outlet', ['id_outlet' => $id])->row_array();
+    $edit = $this->db->get_where('outlet', ['id_outlet' => $id])->row_array();    
     $array = array(
       'edit'=>$edit,
     );

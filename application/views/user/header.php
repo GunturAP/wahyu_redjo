@@ -66,10 +66,10 @@
                                             <a class="nav-link" href="<?= base_url('user/koleksi'); ?>"">Koleksi </a>
                                 </li>
                                 <li class=" nav-item">
-                                        <a class="nav-link" href="<?= base_url('user/blog'); ?>"">Blog </a>
+                                                <a class="nav-link" href="<?= base_url('user/blog'); ?>"">Blog </a>
                                 </li>
                                 <li class=" nav-item">
-                                                <a class="nav-link" href="<?= base_url('user/kontak'); ?>"">Contact us</a>
+                                                    <a class="nav-link" href="<?= base_url('user/kontak'); ?>"">Contact us</a>
                                 </li>
 
                             </ul>
@@ -81,7 +81,7 @@
                             </a>
                             <form class=" form-inline">
 
-                                                    </form>
+                                                        </form>
                         </div>
                     </div>
                 </nav>

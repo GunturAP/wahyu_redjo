@@ -29,6 +29,22 @@ function edit_harga($id, $Data)
   $this->db->where('id', $id);
   $this->db->update('harga_emas');
 }
+//riwayat
+public function get_riwayat()
+{
+  $query = $this->db->get('riwayat_harga_emas');
+  return $query->result();
+}
+public function tambah_riwayat_harga($data)
+{
+  $this->db->insert('riwayat_harga_emas',$data);
+}
+function edit_riwayat_harga($id, $Data)
+{
+  $this->db->set($Data);
+  $this->db->where('id_riwayat', $id);
+  $this->db->update('riwayat_harga_emas');
+}
 
 //Outlet
 public function get_outlet()
@@ -51,6 +67,15 @@ function hapus_outlet($id)
 {
   $this->db->where('id_outlet', $id);
   $this->db->delete('outlet');
+}
+public function cek_riwayat($tgl,$bln,$thn)
+{
+  
+  $this->db->where('tgl',$tgl);
+  $this->db->where('bln',$bln);
+  $this->db->where('thn',$thn);
+  $query = $this->db->get('riwayat_harga_emas');
+  return $query->row_array();
 }
   // ------------------------------------------------------------------------
 
